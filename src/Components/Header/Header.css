@@ -1,0 +1,58 @@
+
+  /* logo */
+  .logo {
+    height: 50px;
+    width: 50px;
+    cursor: pointer;
+}
+
+header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #dfe5ee;
+    padding: 0.5rem 0;
+}
+
+/* search box */
+.search-box{
+  padding: 0.5rem 2rem 0.5rem 1rem;
+  border-radius: 50px;
+  border: 1px solid #ccc;
+  width: 60vw;
+  /* height: 10px; */
+  /* position: relative; */
+}
+
+.search-box:focus{
+  outline: none;
+  border: 1px solid #2bb874;
+}
+
+.search-input-box{
+  position: relative;
+}
+
+.search-input-box span{
+  position: absolute;
+  top: 15%;
+  right: 5%;
+  cursor: pointer;
+}
+input::-webkit-calendar-picker-indicator {
+  display: none;
+}
+
+ul{
+  list-style: none;
+  width: 80%;
+  right: 10%;
+  position: absolute;
+}
+li{
+  /* display: none; */
+  background: #ccc;
+  padding: 0.75rem;
+  border-bottom: 1px solid white;
+  cursor: pointer;
+}

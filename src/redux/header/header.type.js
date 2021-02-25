@@ -1,0 +1,7 @@
+const HeaderActionTypes = {
+    SEARCH_INPUT_CHANGE: 'SEARCH_INPUT_CHANGE',
+    CHANGE_SEARCH_TEXT: 'CHANGE_SEARCH_TEXT',
+    UPDATE_MOVIE_LIST: 'UPDATE_MOVIE_LIST',
+}
+
+export default HeaderActionTypes;

@@ -2,6 +2,8 @@
   text-align: center;
 }
 
+
+/* 
 .App-logo {
   height: 40vmin;
   pointer-events: none;
@@ -35,4 +37,35 @@
   to {
     transform: rotate(360deg);
   }
+} */
+
+
+/* SEARCH BAR */
+.has-search{
+  position: relative;
+}
+.has-search .form-control {
+    padding-right: 2.375rem;
+    border-radius: 50px;
+    padding: 0.5rem 1.5rem;
+    width: 50vw;
+}
+
+.has-search .form-control:focus{
+      border-color: #ced4da;
+      box-shadow: unset;
+}
+
+.has-search .form-control-feedback {
+    position: absolute;
+    right: 3%;
+    z-index: 2;
+    display: block;
+    width: 2.375rem;
+    height: 2.375rem;
+    line-height: 2.375rem;
+    text-align: center;
+    pointer-events: none;
+    color: #aaa;
+  cursor: pointer;
 }
