@@ -6,6 +6,19 @@
     color: black;
 }
 
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400&display=swap');
+
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Roboto', sans-serif;
+}
+
+body{
+    background-color: #e5e5e5;
+}
+
 /* for dark mode one should use css variables so that mutiple change in all css files will reduce */
 body.dark{
     background-color: #393939; 
