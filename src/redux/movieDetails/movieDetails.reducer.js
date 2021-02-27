@@ -1,4 +1,3 @@
-import { movieDetailsSagas } from './movieDetails.sagas';
 import MovieDetailsActionTypes from './movieDetails.type';
 
 const INITIAL_STATE = {

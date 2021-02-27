@@ -1,12 +1,5 @@
 import React from 'react'
 import './Cards.css'
-import img1 from '../../Assets/images/pexels-alex-azabache-3214944.jpg'
-import img2 from '../../Assets/images/pexels-jeremy-bishop-3464632.jpg'
-import img3 from '../../Assets/images/pexels-john-lee-6154807.jpg'
-import img4 from '../../Assets/images/pexels-michael-block-3225517.jpg'
-import img5 from '../../Assets/images/pexels-nick-wehrli-5282269.jpg'
-import img6 from '../../Assets/images/pexels-nothing-ahead-3571551.jpg'
-import img7 from '../../Assets/images/pexels-sidnei-maia-3489130.jpg'
 import { withRouter } from 'react-router-dom'
 
 function Cards({list=[], ...props}) {

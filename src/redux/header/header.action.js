@@ -14,3 +14,7 @@ export const updateMovieList = (list) => ({
     type: HeaderActionTypes.UPDATE_MOVIE_LIST,
     payload: list
 })
+
+export const toggleThemeCheckbox = (list) => ({
+    type: HeaderActionTypes.TOGGLE_THEME_CHECKBOX,
+})

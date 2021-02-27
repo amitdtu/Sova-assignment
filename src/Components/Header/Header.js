@@ -1,49 +1,58 @@
-import React, { Fragment } from 'react'
+import React from 'react'
 import SearchBar from '../SearchBar/SearchBar'
 import Toggle from '../Toggle/Toggle'
 import logo from '../../Assets/images/sova-logo.png'
 import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
-import { searchInputChange } from '../../redux/header/header.action'
+import { searchInputChange, toggleThemeCheckbox } from '../../redux/header/header.action'
 
 class Header extends React.Component {
-    state ={
-        searchText: 'iron man',
-        dropdownList: ['iron man 2008', 'iron man 2009', 'iron man 2012'],
-        darkMode: true,
-    }
 
     searchTextChangeHandler = (e) => {
         this.setState({searchText: e.target.value})
     }
 
+    darkModeToggler = () => {
+        const {isDarkMode, toggleThemeCheckbox} = this.props
+        // toggle dark class in body tag
+        const bodyTag = document.getElementsByTagName("body")[0]
+        if(isDarkMode) {
+            bodyTag.classList.remove("dark");
+        } else {
+            bodyTag.classList.add("dark");
+        }
+        toggleThemeCheckbox()
+    }
+
     render(){
-        const {searchText, dropdownList, darkMode} = this.state
+        const {searchText, movieList, searchInputChange, isDarkMode, toggleThemeCheckbox} = this.props
         return (
             <header>
                 <Link to='/'>
                     <img className="logo" src={logo} alt="logo" />
                 </Link>
                 <SearchBar 
-                    text={this.props.searchText} 
-                    list={this.props.movieList} 
-                    onChangeHanlder={this.props.searchInputChange} 
+                    text={searchText} 
+                    list={movieList} 
+                    onChangeHanlder={searchInputChange} 
                 />
-                <Toggle isChecked={darkMode} toggleChangeHandler={() => this.setState({darkMode: !darkMode})} />
+                <Toggle isChecked={isDarkMode} toggleChangeHandler={this.darkModeToggler} />
             </header>
         )
     }
 }
 
 const mapState = state => {
-    const { searchText, movieList } = state.header
+    const { searchText, movieList, isDarkMode } = state.header
     return {
         searchText,
-        movieList
+        movieList,
+        isDarkMode,
     }
 }
 
 const mapDispatch = dispatch => ({
-    searchInputChange: (e) => dispatch(searchInputChange(e.target.value))
+    searchInputChange: (e) => dispatch(searchInputChange(e.target.value)),
+    toggleThemeCheckbox: () => dispatch(toggleThemeCheckbox()),
 })
 export default  connect(mapState, mapDispatch)(Header)

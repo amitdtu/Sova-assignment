@@ -15,7 +15,7 @@ function SearchBar({text='', list=[], ...props}) {
         props.history.push(`/${id}`)
     }
     return (
-        <div className="search-input-box">
+        <div className="search-input-box text-black">
             <input value={text} onChange={inputChangeHanlder} onClick={() => setHideList(false)} autoComplete="off" list="ice-cream-flavors" type="text" className="search-box" />
             <span onClick={() => setHideList(false)}><i className="fa fa-search" aria-hidden="true"></i>
             </span>

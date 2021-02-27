@@ -1,8 +1,6 @@
 import React from 'react'
 import './CardDetails.css'
-import img from '../../Assets/images/pexels-alex-azabache-3214944.jpg'
 import Button from '../Button/Button'
-import { Card } from 'react-bootstrap'
 import { withRouter } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { fetchMovieDetails } from '../../redux/movieDetails/movieDetails.action'

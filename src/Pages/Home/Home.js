@@ -1,7 +1,6 @@
 import React, { Fragment } from 'react'
 import { connect } from 'react-redux'
 import Cards from '../../Components/Cards/Cards'
-import Toggle from '../../Components/Toggle/Toggle'
 
  function Home({movieList}) {
     return (

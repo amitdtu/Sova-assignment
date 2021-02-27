@@ -1,4 +1,4 @@
-import { all, call, debounce, put, takeEvery, takeLatest, delay } from 'redux-saga/effects';
+import { all, call, put, takeLatest, delay } from 'redux-saga/effects';
 import { updateSearchText, updateMovieList } from './header.action'
 
 import HeaderActionTypes from './header.type';

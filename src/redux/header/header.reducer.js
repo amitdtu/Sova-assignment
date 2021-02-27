@@ -2,7 +2,8 @@ import HeaderActionTypes from "./header.type";
 
 const INITIAL_STATE = {
   searchText: '',
-  movieList: []
+  movieList: [],
+  isDarkMode: false,
 };
 
 const headerReducer = (state = INITIAL_STATE, action) => {
@@ -18,6 +19,13 @@ const headerReducer = (state = INITIAL_STATE, action) => {
       return {
         ...state,
         movieList: action.payload
+      };
+ 
+      
+    case HeaderActionTypes.TOGGLE_THEME_CHECKBOX:
+      return {
+        ...state,
+        isDarkMode: !state.isDarkMode
       };
  
 
