@@ -2,26 +2,75 @@ import React from 'react'
 import './CardDetails.css'
 import img from '../../Assets/images/pexels-alex-azabache-3214944.jpg'
 import Button from '../Button/Button'
+import { Card } from 'react-bootstrap'
+import { withRouter } from 'react-router-dom'
+import { connect } from 'react-redux'
+import { fetchMovieDetails } from '../../redux/movieDetails/movieDetails.action'
+import { searchInputChange } from '../../redux/header/header.action'
+import Spinner from '../Spinner/Spinner'
 
-export default function CardDetails() {
-    return (
-        <section>
-            <div className="card-details">
-                <img src={img} alt="" />
-                <div className="content">
-                    <h2 className="title">Iron Man (2008)</h2>
-                    <div className="details">
-                        <p>IMDB Rating: 7.9</p>
-                        <p>Runtime: 126 minutes</p>
-                        <p>Genre: Action, Adventure, Sci-Fi</p>
-                        <p>Director: Jon Favreau</p>
-                        <p>Country: USA, Canada</p>
+class CardDetails extends React.Component {
+
+    componentDidMount(){
+        const {match, fetchMovieDetails} = this.props
+        console.log(match.params.movieID)
+        fetchMovieDetails(match.params.movieID)
+
+    }
+
+    componentDidUpdate(prevProps){
+        if(prevProps.match.params.movieID !== this.props.match.params.movieID){
+            this.props.fetchMovieDetails(this.props.match.params.movieID)
+        }
+    }
+
+    viewSimilarHandler = () => {
+        const {searchInputChange, history, data} = this.props
+        searchInputChange(data.Title)
+        history.push('/')
+    }
+
+    render(){
+        const {data, isFetching, searchInputChange} = this.props
+        if(isFetching) return <Spinner />
+
+        return (
+            data ? <section>
+                <div className="card-details">
+                    <img src={data.Poster} alt="" />
+                    <div className="content">
+                        <h2 className="title">{data.Title} ({data.Year})</h2>
+                        <div className="details">
+                            <p>IMDB Rating: {data.imdbRating}</p>
+                            <p>Runtime: {data.Runtime}</p>
+                            <p>Genre: {data.Genre}</p>
+                            <p>Director: {data.Director}</p>
+                            <p>Country: {data.Country}</p>
+                        </div>
+                        <span className="story">{data.Plot}</span>
                     </div>
-                    <span className="story">After being held captive in an Afghan cave, billionaire engineer Tony Stark creates a unique weaponized suit of armor to fight evil</span>
                 </div>
-            </div>
-            <Button> View Similar </Button>
-        </section>
-
-    )
+                <Button onClick={this.viewSimilarHandler}> View Similar </Button>
+            </section> : null
+    
+        )
+    }
 }
+
+const mapState = (state) => {
+    const { data, isFetching } = state.movieDetails;
+    return {
+        data,
+        isFetching,
+    }
+}
+
+const mapDispatch = dispatch => ({
+    fetchMovieDetails: (id) => dispatch(fetchMovieDetails(id)),
+    searchInputChange: (text) => dispatch(searchInputChange(text)),
+
+})
+
+
+
+export default withRouter(connect(mapState, mapDispatch)(CardDetails))

@@ -1,8 +1,8 @@
 import HeaderActionTypes from './header.type'
 
-export const searchInputChange = (e) => ({
+export const searchInputChange = (text) => ({
     type: HeaderActionTypes.SEARCH_INPUT_CHANGE,
-    payload: e.target.value
+    payload: text
 })
 
 export const updateSearchText = (text) => ({

@@ -1,4 +1,4 @@
-import { all, call, put, takeEvery, takeLatest } from 'redux-saga/effects';
+import { all, call, debounce, put, takeEvery, takeLatest, delay } from 'redux-saga/effects';
 import { updateSearchText, updateMovieList } from './header.action'
 
 import HeaderActionTypes from './header.type';
@@ -12,18 +12,18 @@ export function* searchInputAsync({payload}) {
 
     yield put(updateSearchText(payload))
     
-    // Should do debouncing.
-    // Can use a separate function to call APIs.
+    // for debouncing
+    yield delay(250)
 
     const {data} = yield axios.get(`http://www.omdbapi.com/?s=${payload}&apikey=${apiKey}`)
+    
     let list = [];
     if(data.Search) list = data.Search
     yield put(updateMovieList(list))
-    // console.log(data)
 }
 
 export function* onSearchInputChange() {
-    yield takeEvery(HeaderActionTypes.SEARCH_INPUT_CHANGE, searchInputAsync)
+    yield takeLatest(HeaderActionTypes.SEARCH_INPUT_CHANGE, searchInputAsync)
 }
 
 

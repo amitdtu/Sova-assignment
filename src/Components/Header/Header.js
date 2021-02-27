@@ -44,6 +44,6 @@ const mapState = state => {
 }
 
 const mapDispatch = dispatch => ({
-    searchInputChange: (e) => dispatch(searchInputChange(e))
+    searchInputChange: (e) => dispatch(searchInputChange(e.target.value))
 })
 export default  connect(mapState, mapDispatch)(Header)
